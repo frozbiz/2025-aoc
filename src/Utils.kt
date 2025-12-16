@@ -376,9 +376,11 @@ data class MultiRange (
         return rangeList.any { v in it }
     }
 
-    fun count(): Int {
-        return rangeList.sumOf { it.count() }
+    operator fun contains(v: Long): Boolean {
+        return rangeList.any { v in it }
     }
+
+    val size: Long get() = rangeList.sumOf { it.size }
 
     fun trimToRange(range: LongRange) {
         rangeList.removeIf { it.last < range.first || range.last < it.first }
