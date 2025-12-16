@@ -1,15 +1,4 @@
 fun main() {
-    fun Int.rotate(direction: Direction, steps: Int): Pair<Int, Int> {
-        val distance = steps % 100
-        val interim = this + direction.convert(distance)
-        val rotations = steps / 100 +  when (direction) {
-            Direction.RIGHT if (interim >= 100) -> 1
-            Direction.LEFT if (interim <= 100 && this != 0) -> 1
-            else -> 0
-        }
-        return rotations to ((interim) % 100)
-    }
-
     fun String.parse(): List<LongRange> {
         return split(',').map {
             val (first, second) = it.split('-').map{ it.toLong() }
